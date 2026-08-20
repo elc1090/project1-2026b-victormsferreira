@@ -1,0 +1,99 @@
+:root {
+  --col0:#0d2b45;
+  --col1:#203c56;
+  --col2:#544e68;
+  --col3:#8d697a;
+  --col4:#d08159;
+  --col5:#ffaa5e;
+  --col6:#ffd4a3;
+  --col7:#ffecd6;
+}
+body {
+  background: var(--col0);
+  color: var(--col7);
+  font-family: sans-serif;
+}
+
+.main-app {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-list {
+  display: grid;
+
+  width: 15%;
+  height: 90%;
+  padding: 4px;
+  border: 2px solid;
+  border-radius: 5px;
+  gap: 1%;
+
+  overflow: hidden auto;
+}
+
+
+.image-preview {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  height: 56px;
+  padding: 2px;
+  border: 2px solid;
+  border-radius: 5px;
+  font-size: 10pt;
+  align-items: center;
+}
+.image-preview:hover {
+  background: var(-col2);
+}
+
+.image-preview div {
+  display: grid;
+  align-items: center;
+  height: 100%;
+  padding: 5px;
+}
+
+.image-preview-image {
+  width: 64px;
+  height: 48px;
+  min-width: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.image-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+.annotation-count {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  color: var(--col6);
+}
+
+.viewport {
+  user-select: none;
+  padding: 10px;
+  width: 70%;
+  height: 90%;
+  position: relative;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background-image:
+    linear-gradient(45deg, var(--col1) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--col1) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--col1) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--col1) 75%);
+  background-size: 20px 20px;
+
+}
+
+#main-image {
+  pointer-events: none;
+}

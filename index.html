@@ -1,3 +1,24 @@
-<p>
-  Hello, World!
-</p>
+<html>
+  <head>
+    <title>Image Annotator</title>
+    <link rel="stylesheet" href="index.css"/>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <div class="header">
+      <h2> Image Annotator</h2>
+      <input id="image-picker" type="file" accept="image/*" multiple>
+    </div>
+
+    <div class="main-app">
+      <div id="image-list" class="image-list"></div>
+      <div class="viewport" id="viewport">
+        <img id="main-image" src="/"/>
+        <div id="annotations-container"/>
+      </div>
+    </div>
+  </body>
+
+  <script src="javascript.js"></script>
+
+</html>
