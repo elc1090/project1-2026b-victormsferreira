@@ -14,9 +14,43 @@
       <div id="image-list" class="image-list"></div>
       <div class="viewport" id="viewport">
         <div id="viewport-items" class="viewport-items">
-          <img id="main-image" src="/"/>
-          <div id="annotations-container" class="annotations-container"/>
+          <img id="main-image" src="/">
+            <div id="annotations-container" class="annotations-container"/>
+          </img>
         </div>
+      </div>
+    </div>
+    <div class="annotation-editor">
+      <div id="tag-editor">
+        <label for="tag-input">Tag:
+          <input type="text" id="tag-input" name="tag"/>
+        </label>
+      </div>
+      <div class="infobox" id="note-x">
+        <span class="label">X</span>
+        <b class="info">0</b>
+      </div>
+      <div class="infobox" id="note-y">
+        <span class="label">Y</span>
+        <b class="info">0</b>
+      </div>
+      <div class="infobox" id="note-w">
+        <span class="label">Width</span>
+        <b class="info">0</b>
+      </div>
+      <div class="infobox" id="note-h">
+        <span class="label">Height</span>
+        <b class="info">0</b>
+      </div>
+      <div class="infobox" id="color-box">
+        <label>Annotation Color:
+          <input type="color" id="color-input" name="color"/>
+        </label>
+      </div>
+      <div class="infobox" id="alpha-box">
+        <label>Opacity:
+          <input type="range" id="opacity-input" name="opacity" min="0" max="100"/>
+        </label>
       </div>
     </div>
   </body>

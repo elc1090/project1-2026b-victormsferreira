@@ -85,10 +85,9 @@ body {
 }
 
 .viewport {
-
   padding: 4px;
   user-select: none;
-  width: 60%;
+  width: 65%;
   height: 90%;
   overflow: hidden;
   overscroll-behavior: none;
@@ -103,11 +102,14 @@ body {
   border-color: var(--col7);
 }
 
+
 .viewport-items {
 }
 
 .annotations-container{
   position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #main-image {
@@ -130,7 +132,7 @@ body {
   border-radius: 5px;
 }
 
-.note #box {
+.note .box {
   position: absolute;
   top: 0px;
   border: 1px solid;
@@ -142,4 +144,76 @@ body {
   border-radius: 5px;
   border-color: var(--col7);
   translate: -2px -2px;
+}
+
+
+.annotation-editor {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  padding: 4px;
+  width: 20%;
+  user-select: none;
+  height: 90%;
+  background-color: var(--col0);
+  border: 2px solid;
+  border-radius: 5px;
+  border-color: var(--col7);
+}
+
+#tag-editor {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid;
+  border-radius: 5px;
+  border-color: var(--col7);
+  background: var(--col1);
+  padding: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+
+.infobox {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid;
+  border-radius: 5px;
+  border-color: var(--col7);
+  background: var(--col1);
+  padding: 10px;
+  margin: 10px;
+  gap: 0px;
+}
+
+.infobox .label {
+  color: var(--col6);
+  font-size: 12px;
+}
+
+.infobox .info {
+  padding-left: 8px;
+  font-size: 16px;
+}
+
+#tag-editor input {
+  width: 100%;
+  height: 80%;
+  border-color: var(--col7);
+  background: var(--col0);
+  color: var(--col7);
+}
+
+#color-box label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#alpha-box label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
