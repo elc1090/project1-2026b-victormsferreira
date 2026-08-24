@@ -12,6 +12,91 @@ body {
   background: var(--col0);
   color: var(--col7);
   font-family: sans-serif;
+  border-color: var(--col5);
+}
+
+.header {
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.toolbar-annotation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px;
+  width: 20%;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+.viewport-tools {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+  width: 65%;
+  border: 2px solid;
+  gap: 0.5%;
+  border-radius: 5px;
+}
+
+button, .image-upload {
+  background-color: var(--col1);
+  font-size: 16px;
+  border-radius: 5px;
+  color: var(--col7);
+  padding: 2%;
+  border: 2px solid;
+  transition-duration: 0.1s;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type=file] {
+  display: none;
+}
+
+
+
+button:hover, .image-upload:hover {
+  scale: 1.1;
+}
+
+button:active, .image-upload:active  {
+  background-color: var(--col0);
+  scale: 0.9;
+}
+
+.viewport-tools button.current {
+  background-color: var(--col3);
+}
+
+.image-list-tools {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px;
+  width: 15%;
+  max-width: 15%;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+.viewport-tools p {
+  color: var(--col6);
+  font-size: 12px;
+}
+
+.tool-button {
 }
 
 .main-app {
@@ -30,7 +115,6 @@ body {
   padding: 4px;
   border: 2px solid;
   border-radius: 5px;
-  border-color: var(--col7);
   gap: 1%;
 
   overflow: hidden auto;
@@ -125,9 +209,7 @@ body {
 .note p {
   position: absolute;
   white-space: nowrap;
-  top: -28px;
   padding: 2px;
-  font-size: 10px;
   border: 1px solid;
   border-radius: 5px;
 }
@@ -136,7 +218,6 @@ body {
   position: absolute;
   top: 0px;
   border: 1px solid;
-  border-radius: 5px;
 }
 
 .note .handle {
@@ -168,7 +249,7 @@ body {
   border-radius: 5px;
   border-color: var(--col7);
   background: var(--col1);
-  padding: 10px;
+  padding: 5%;
   grid-column-start: 1;
   grid-column-end: 3;
 }
@@ -217,3 +298,17 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+#tag-font-size-input {
+  width: 100%;
+}
+#tag-circular label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#tag-circular-input {
+  scale: 2;
+}
+
