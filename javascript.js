@@ -51,6 +51,16 @@ let imgHeight = 0;
 let images = [];
 let imageIndex = -1;
 
+function selectNote(note) {
+  if (selectedNote) {
+    selectedNote.className = "note"
+  }
+  selectedNote = note;
+  if (note) {
+    note.className = "note selected"
+  }
+}
+
 function newAnnotation() {
   return {
     x: Math.random()*64,
@@ -196,7 +206,7 @@ function regenerateAnnotations() {
 
 function setMainImage(index) {
   imageIndex = index;
-  selectedNote = null;
+  selectNote(null);
   selectedHandle = null;
   if (index == -1) {
     mainImage.style.display = "none";
@@ -317,19 +327,19 @@ viewport.addEventListener("pointerdown", function(e) {
   let handle = e.target.closest(".handle")
   if (handle) {
     selectedHandle = handle;
-    selectedNote = selectedHandle.note;
+    selectNote(selectedHandle.note);
     properties.div.style.visibility = "visible";
     updatePropertiesPanel(selectedHandle.note.annotation);
   } else  if (note) {
     selectedHandle= null;
-    selectedNote = note;
+    selectNote(note);
     properties.div.style.visibility = "visible";
     updatePropertiesPanel(selectedNote.annotation);
   } else {
     if (mode == "select") {
       properties.div.style.visibility = "hidden";
       selectedHandle= null;
-      selectedNote = null;
+      selectNote(null);
     } else {
       const viewportRect = this.getBoundingClientRect();
       let n = newAnnotation();
@@ -454,7 +464,7 @@ buttons.delete.addEventListener("click", function(e) {
   if (selectedNote) {
     images[imageIndex].annotations.splice(images[imageIndex].annotations.indexOf(selectedNote.annotation), 1);
     regenerateAnnotations();
-    selectedNote = null;
+    selectNote(null);
     properties.div.style.visibility = "hidden";
   }
 });
