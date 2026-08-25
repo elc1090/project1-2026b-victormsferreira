@@ -346,6 +346,7 @@ filePicker.addEventListener("input", onFilePick);
 
 viewport.addEventListener("pointermove", function(e) {
   if (e.buttons & 1) {
+    if (imageIndex < 0) return;
     let x = e.movementX;
     let y = e.movementY;
     x = x / cam.scale;
@@ -390,6 +391,7 @@ viewport.addEventListener("pointermove", function(e) {
 }, true);
 
 viewport.addEventListener("pointerdown", function(e) {
+  if (imageIndex < 0) return;
   let note = e.target.closest(".note")
   let handle = e.target.closest(".handle")
   if (handle) {
