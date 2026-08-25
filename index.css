@@ -7,7 +7,7 @@
   --col5:#ffaa5e;
   --col6:#ffd4a3;
   --col7:#ffecd6;
-  --height:85%;
+  --height:80%;
 }
 body {
   background: var(--col0);
@@ -33,6 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 4px;
   width: 20%;
   border: 2px solid;
@@ -90,6 +91,11 @@ button:active, .image-upload:active  {
   max-width: 15%;
   border: 2px solid;
   border-radius: 5px;
+
+  overflow: hidden auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--col7) var(--col1) ;
 }
 
 .viewport-tools p {
@@ -230,7 +236,9 @@ button:active, .image-upload:active  {
 
 .note .handle {
   border: 4px solid;
-  border-radius: 5px;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
   border-color: var(--col7);
   translate: -2px -2px;
 }

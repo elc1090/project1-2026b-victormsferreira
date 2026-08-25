@@ -14,6 +14,10 @@
             <input id="image-picker" type="file" accept="image/*" multiple/>
             Add Files
           </label>
+          <label class="image-upload">
+            <input id="image-capture" type="file" accept="image/*" multiple capture="user"/>
+            Capture
+          </label>
           <button id="remove" class="tool-button">Remove</button>
         </div>
         <div class="viewport-tools">
@@ -23,6 +27,11 @@
           <button id="zoom-out" class="tool-button">-</button>
           <button id="zoom-display" class="tool-button">100%</button>
           <button id="zoom-in" class="tool-button">+</button>
+          <button id="export-json" class="tool-button">Export JSON</button>
+          <label class="image-upload">
+            <input id="import-json" type="file" accept="text/plain"/>
+            Import JSON
+          </label>
           <p>Wheel to zoom. Drag to pan</p>
         </div>
         <div class="toolbar-annotation">

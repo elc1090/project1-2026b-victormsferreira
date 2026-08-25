@@ -25,12 +25,76 @@ const buttons = {
   zoomIn: document.getElementById("zoom-in"),
   zoomDisplay: document.getElementById("zoom-display"),
   remove: document.getElementById("remove"),
+  export: document.getElementById("export-json"),
+  import: document.getElementById("import-json"),
 }
 
 let mode = "select"
 
 let cam = { x: 0, y: 0, scale: 1 };
 
+function exportJSON() {
+  let exported = {
+    version: 1,
+    exportDate: 0,
+    images: [],
+  };
+  for (img of images) {
+    let imgData = {
+      imgName: img.name,
+      data: img.data,
+      annotations: [],
+    };
+    for (annotation of img.annotations) {
+      imgData.annotations.push( {
+        x: annotation.x,
+        y: annotation.y,
+        w: annotation.w, 
+        h: annotation.h,
+        text: annotation.text,
+        fontSize: annotation.fontSize,
+        col: annotation.col,
+        circle: annotation.circle,
+      });
+    }
+    exported.images.push(imgData);
+  }
+  let json = JSON.stringify(exported)
+  var a = document.createElement("a");
+  var file = new Blob([json], {type: "text/plain"});
+  a.href = URL.createObjectURL(file);
+  a.download = "annotations.json";
+  a.click();
+}
+
+
+async function importJSON(file) {
+  const json = await file.text();
+  data = JSON.parse(json);
+  console.log(data);
+  for (img of data.images) {
+    let newImage = { 
+      name: img.imgName, 
+      url: img.data,
+      data: img.data,
+      annotations: []
+    }
+    images.push(newImage); 
+    for (annotation of img.annotations) {
+      newImage.annotations.push( {
+        x: annotation.x,
+        y: annotation.y,
+        w: annotation.w, 
+        h: annotation.h,
+        text: annotation.text,
+        fontSize: annotation.fontSize,
+        col: annotation.col,
+        circle: annotation.circle,
+      });
+    }
+  }
+  updateImageList();
+}
 
 function camZoom(amt) {
   camSetZoom(cam.scale + amt);
@@ -265,13 +329,16 @@ function updateImageList() {
   }
 }
 
-function onFilePick() {
+async function onFilePick() {
   for (const img of filePicker.files) {
-    images.push({ 
+    let buffer = new Uint8Array(await img.arrayBuffer());
+    let newImg = {
       name: img.name, 
       url: URL.createObjectURL(img), 
+      data: "data:"+img.type+";base64,"+buffer.toBase64(),
       annotations: []
-    }); 
+    }
+    images.push(newImg); 
   }
   updateImageList();
 }
@@ -352,14 +419,17 @@ viewport.addEventListener("pointerdown", function(e) {
   }
 }, true);
 
-viewport.addEventListener("drop", function(e) {
+  viewport.addEventListener("drop", async function(e) {
   e.preventDefault();
   for (const img of e.dataTransfer.files) {
-    images.push({ 
+    let buffer = new Uint8Array(await img.arrayBuffer());
+    let newImg = {
       name: img.name, 
       url: URL.createObjectURL(img), 
-      annotations: [newAnnotation()]
-    }); 
+      data: "data:"+img.type+";base64,"+buffer.toBase64(),
+      annotations: []
+    }
+    images.push(newImg); 
   }
   updateImageList();
 });
@@ -480,5 +550,11 @@ buttons.remove.addEventListener("click", function(e) {
     setMainImage(imageIndex);
   }
   updateImageList();
+});
+buttons.export.addEventListener("click", function(e) {
+  exportJSON();
+});
+buttons.import.addEventListener("input", function(e) {
+  importJSON(this.files[0]);
 });
 properties.div.style.visibility = "hidden";
