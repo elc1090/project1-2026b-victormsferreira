@@ -36,7 +36,7 @@ let cam = { x: 0, y: 0, scale: 1 };
 function exportJSON() {
   let exported = {
     version: 1,
-    exportDate: 0,
+    exportDate: new Date().toISOString(),
     images: [],
   };
   for (img of images) {
